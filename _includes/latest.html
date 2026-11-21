@@ -1,0 +1,18 @@
+{% if page.topic_filter %}
+  {% assign latest_list = site.posts | where: "topic", page.topic_filter %}
+  {% assign latest_label = "Latest in " | append: page.topic_filter %}
+{% else %}
+  {% assign latest_list = site.posts %}
+  {% assign latest_label = "Latest post" %}
+{% endif %}
+{% assign latest = latest_list | first %}
+
+<p class="label">{{ latest_label }}</p>
+{% if latest %}
+  <h2 class="post-title"><a href="{{ latest.url | relative_url }}">{{ latest.title }}</a></h2>
+  <p class="meta">{{ latest.date | date: "%B %-d, %Y" }}{% if latest.topic %} · {{ latest.topic }}{% endif %}</p>
+  <div class="excerpt">{{ latest.excerpt }}</div>
+  <a class="more" href="{{ latest.url | relative_url }}">Continue reading</a>
+{% else %}
+  <p class="empty">No posts here yet.</p>
+{% endif %}

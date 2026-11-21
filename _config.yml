@@ -1,3 +1,26 @@
 theme: jekyll-theme-minimal
 title: David's homepage
 description: Bookmark this to keep an eye on my project updates!
+github_url: https://github.com/David-Berntsson
+
+plugins:
+  - jekyll-seo-tag
+
+# Post URLs look like /posts/2026/11/my-post-title/
+permalink: /posts/:year/:month/:title/
+
+# The topics shown in the bar at the top of every page.
+# "name" must match the `topic:` you write at the top of each post.
+topics:
+  - name: Computer Science
+    slug: computer-science
+  - name: Mathematics
+    slug: mathematics
+  - name: Education
+    slug: education
+  - name: Artificial Intelligence
+    slug: artificial-intelligence
+  - name: Finance
+    slug: finance
+  - name: Other
+    slug: other
