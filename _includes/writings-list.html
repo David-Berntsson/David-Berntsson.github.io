@@ -1,0 +1,19 @@
+{% include latest.html %}
+
+{% if page.topic_filter %}
+  {% assign all_list = site.posts | where: "topic", page.topic_filter %}
+{% else %}
+  {% assign all_list = site.posts %}
+{% endif %}
+
+{% if all_list.size > 0 %}
+  <h2 class="label section-label rule">{% if page.topic_filter %}All posts in {{ page.topic_filter }}{% else %}All posts{% endif %}</h2>
+  <ul class="rows">
+    {% for p in all_list %}
+      <li class="row-line">
+        <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
+        <span class="meta">{{ p.date | date: "%b %-d, %Y" }}{% if p.topic and page.topic_filter == nil %} · {{ p.topic }}{% endif %}</span>
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}

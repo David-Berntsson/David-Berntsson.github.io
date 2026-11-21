@@ -2,6 +2,7 @@ theme: jekyll-theme-minimal
 title: David's homepage
 description: Various thoughts and reflections
 github_url: https://github.com/David-Berntsson
+email: "[your email]"   # shown under Contact on the About page
 
 plugins:
   - jekyll-seo-tag
@@ -9,7 +10,31 @@ plugins:
 # Post URLs look like /posts/2026/11/my-post-title/
 permalink: /posts/:year/:month/:title/
 
-# The topics shown in the bar at the top of every page.
+# The sections in the bar at the top of every page, in order.
+# "blurb" is the line shown under each section on the About page.
+# "id" must match the `section:` of the pages that belong to it.
+sections:
+  - name: About
+    id: about
+    url: /
+  - name: "Reflections & Writings"
+    id: writings
+    url: /writings/
+    blurb: "Longer posts on computer science, mathematics, AI, finance and more."
+  - name: Projects
+    id: projects
+    url: /projects/
+    blurb: "What I'm building, and the posts about each project."
+  - name: "Articles & Books"
+    id: reading
+    url: /reading/
+    blurb: "What I've been reading, with short notes."
+  - name: Notes
+    id: notes
+    url: /notes/
+    blurb: "Short, unpolished ideas and things I've learned."
+
+# The topics listed in the Reflections & Writings sidebar.
 # "name" must match the `topic:` you write at the top of each post.
 topics:
   - name: Computer Science
@@ -26,3 +51,26 @@ topics:
     slug: literature-philosophy
   - name: Other
     slug: other
+
+# Projects: one file per project in _projects/, each with its own page.
+# Notes: one file per note in _notes/, all shown together on /notes/.
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+  notes:
+    output: false
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      section: writings
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: project
+      section: projects

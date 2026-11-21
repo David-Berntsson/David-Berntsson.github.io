@@ -1,0 +1,25 @@
+# Everything on the Articles & Books page comes from this file.
+# Add new entries at the top of each list; they're shown in the order written here.
+#
+# A book looks like this (only title is required):
+#
+#   - title: Gödel, Escher, Bach
+#     author: Douglas Hofstadter
+#     status: reading          # "reading" puts it in the Now panel on About
+#     read: 2026-11-01         # when you finished it (shown as "Read November 2026")
+#     topic: Mathematics
+#     note: One or two sentences on what stayed with you.
+#     post: /posts/2026/11/my-post-about-it/   # optional link to a longer post
+#
+# An article looks like this:
+#
+#   - title: The article's title
+#     source: Where it was published, or who wrote it
+#     url: https://example.com/the-article
+#     read: 2026-11-01
+#     topic: Artificial Intelligence
+#     note: Why it's worth reading.
+
+books: []
+
+articles: []

@@ -1,0 +1,7 @@
+<nav class="nav" aria-label="Sections">
+  <div class="nav-inner">
+    {% for s in site.sections %}
+      <a href="{{ s.url | relative_url }}"{% if page.section == s.id %} class="active"{% endif %}{% if page.url == s.url %} aria-current="page"{% endif %}>{{ s.name }}</a>
+    {% endfor %}
+  </div>
+</nav>

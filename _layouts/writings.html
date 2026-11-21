@@ -1,0 +1,27 @@
+---
+layout: default
+---
+{% comment %}
+  Reflections & Writings: the only section with a sidebar.
+  Used by the /writings/ page, the topic pages and every post.
+{% endcomment %}
+{% assign active_topic = page.topic_filter | default: page.topic %}
+<aside class="sidebar">
+  <h1 class="site-title"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+  <p class="site-desc">{{ site.description }}</p>
+
+  <div class="topic-list">
+    <h2 class="label">Topics</h2>
+    <ul>
+      <li><a href="{{ '/writings/' | relative_url }}"{% if page.url == '/writings/' %} class="active" aria-current="page"{% endif %}>All</a></li>
+      {% for t in site.topics %}
+        {% capture topic_url %}/writings/{{ t.slug }}/{% endcapture %}
+        <li><a href="{{ topic_url | relative_url }}"{% if active_topic == t.name %} class="active"{% endif %}{% if page.url == topic_url %} aria-current="page"{% endif %}>{{ t.name }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</aside>
+
+<main class="content">
+  {{ content }}
+</main>

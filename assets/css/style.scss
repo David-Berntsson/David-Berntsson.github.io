@@ -59,10 +59,10 @@ body::before {
     url("../images/bg/contours-bottom.svg?v={{ site.time | date: '%s' }}") center bottom / 100% auto no-repeat;
 }
 
-/* ---------- Topics bar ---------- */
-.topics { border-bottom: 1px solid $border; }
+/* ---------- Section bar ---------- */
+.nav { border-bottom: 1px solid $border; }
 
-.topics-inner {
+.nav-inner {
   max-width: 1080px;
   margin: 0 auto;
   padding: 22px 40px;
@@ -71,21 +71,21 @@ body::before {
   gap: 8px 28px;
 }
 
-.topics a {
+.nav a {
   padding: 10px 0;
   font-size: 16px;
   color: $muted;
   text-decoration: none;
 }
-.topics a:hover { color: $heading; }
-.topics a.active {
+.nav a:hover { color: $heading; }
+.nav a.active {
   color: $heading;
   text-decoration: underline;
   text-underline-offset: 6px;
   text-decoration-color: $heading;
 }
 
-/* ---------- Two-column layout ---------- */
+/* ---------- Layout: main column plus an optional side panel ---------- */
 .wrap {
   max-width: 1080px;
   margin: 0 auto;
@@ -95,33 +95,35 @@ body::before {
   gap: 48px 80px;
 }
 
-/* ---------- Sidebar ---------- */
+/* ---------- Sidebar (Reflections & Writings only) ---------- */
 .sidebar { flex: 1 1 260px; max-width: 300px; }
 
 .site-title { margin: 0 0 8px; font-size: 32px; font-weight: 400; }
 .site-title a { color: $heading; text-decoration: none; }
 
-.site-desc { margin: 0 0 16px; font-size: 16px; color: $muted; }
-.github { font-size: 16px; color: $muted; }
+.site-desc { margin: 0; font-size: 16px; color: $muted; }
 
-.post-list {
+.topic-list {
   margin-top: 40px;
   padding-top: 24px;
   border-top: 1px solid $border;
 }
-.post-list ul {
+.topic-list ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 10px;
 }
-.post-list li { display: flex; flex-direction: column; gap: 2px; }
-.post-list li a { font-size: 17px; line-height: 1.35; text-decoration: none; }
-.post-list li a:hover { text-decoration: underline; }
-.post-list li a.current { color: #fff; text-decoration: underline; }
-.post-list .meta { margin: 0; font-size: 13px; }
+.topic-list a { font-size: 16px; color: $muted; text-decoration: none; }
+.topic-list a:hover { color: $heading; }
+.topic-list a.active {
+  color: $heading;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: $heading;
+}
 
 /* ---------- Main content ---------- */
 .content { flex: 999 1 520px; min-width: 0; max-width: 620px; }
@@ -168,12 +170,129 @@ table { border-collapse: collapse; width: 100%; }
 th, td { border-bottom: 1px solid $border; padding: 8px 10px; text-align: left; }
 th { color: $heading; }
 
+/* ---------- Shared pieces for the section pages ---------- */
+.intro { margin: -4px 0 32px; color: $muted; }
+.github-link { margin: -20px 0 32px; font-size: 16px; }
+.github-link a { color: $muted; }
+
+.section-label { margin: 40px 0 16px; }
+.section-label.rule { margin: 56px 0 0; padding-bottom: 16px; border-bottom: 1px solid $border; }
+.intro + .section-label.rule, .github-link + .entries { margin-top: 0; }
+
+.rows, .site-map { list-style: none; margin: 0; padding: 0; }
+.row-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  padding: 14px 0;
+  border-bottom: 1px solid $border;
+}
+.row-line a { font-size: 17px; text-decoration: none; }
+.row-line a:hover { text-decoration: underline; }
+.row-line .meta { margin: 0; white-space: nowrap; }
+.section-label.rule + .empty { margin-top: 16px; }
+
+/* About: list of sections and contact */
+.site-map {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 18px;
+  border-top: 1px solid $border;
+}
+.site-map li { display: flex; flex-direction: column; gap: 2px; }
+.site-map a { font-size: 17px; text-decoration: none; }
+.site-map a:hover { text-decoration: underline; }
+.site-map .meta { margin: 0; font-size: 15px; }
+.contact { margin: 0; font-size: 16px; color: $muted; }
+
+/* Right-hand panel: Now (About) and Details (project pages) */
+.side-panel {
+  flex: 1 1 260px;
+  max-width: 300px;
+  align-self: flex-start;
+  margin-top: 12px;
+  padding-top: 18px;
+  border-top: 1px solid $border;
+}
+.side-panel .label { margin-bottom: 24px; }
+.now-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 28px; }
+.now-group h3 { margin: 0; font-size: 14px; font-weight: 400; font-style: italic; color: $muted; }
+.now-item { display: flex; flex-direction: column; gap: 2px; }
+.now-item a { font-size: 17px; line-height: 1.35; text-decoration: none; }
+.now-item a:hover { text-decoration: underline; }
+.now-item .meta { margin: 0; }
+
+.facts { margin: -16px 0 0; }
+.facts div {
+  display: grid;
+  grid-template-columns: 90px minmax(0, 1fr);
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid $border;
+  font-size: 15px;
+}
+.facts dt { color: $muted; }
+.facts dd { margin: 0; }
+.section-projects .side-panel { margin-top: 74px; }
+
+/* Lists of projects, books and articles */
+.entries { border-top: 1px solid $border; }
+.entry {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 24px 0;
+  border-bottom: 1px solid $border;
+}
+.entry p { margin: 0; }
+.entry .meta { margin: 4px 0 0; font-size: 15px; }
+.entry-title { margin: 0; font-size: 24px; font-weight: 400; color: $heading; }
+.entry-title a { color: $heading; text-decoration: none; }
+.entry-title a:hover { text-decoration: underline; }
+.reading-entry { gap: 4px; padding: 18px 0; }
+.reading-entry p { font-size: 16px; }
+.reading-entry .entry-title { font-size: 19px; }
+.reading-entry .meta { margin: 0; font-size: 14px; }
+.by { color: $muted; }
+
+.project-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px 16px; }
+.project-head .post-title { margin-bottom: 12px; }
+.status {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $muted;
+}
+.status-active { color: #a9c48f; }
+.back { display: inline-block; margin-bottom: 28px; font-size: 15px; color: $muted; }
+.lede { margin: 0 0 32px; font-size: 20px; color: $muted; }
+.lede + .post-body h2:first-child { margin-top: 0; }
+
+/* Notes */
+.note {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr);
+  gap: 4px 24px;
+  padding: 20px 0;
+  border-bottom: 1px solid $border;
+  scroll-margin-top: 24px;
+}
+.note > .meta { margin: 0; padding-top: 3px; }
+.note-title { margin: 0 0 6px; font-size: 17px; font-weight: 600; line-height: 1.5; }
+.note-body { font-size: 17px; min-width: 0; }
+.note-body p { margin: 0 0 12px; }
+.note-body > :last-child { margin-bottom: 0; }
+.note:target .note-title { text-decoration: underline; text-underline-offset: 4px; }
+
 /* ---------- Phones ---------- */
 @media (max-width: 720px) {
   body { font-size: 17px; }
   body::before { background-size: 160% auto, 160% auto; background-position: right top, left bottom; }
 
-  .topics-inner {
+  .nav-inner {
     flex-wrap: nowrap;
     overflow-x: auto;
     white-space: nowrap;
@@ -181,11 +300,38 @@ th { color: $heading; }
     gap: 22px;
     scrollbar-width: none;
   }
-  .topics-inner::-webkit-scrollbar { display: none; }
-  .topics a { font-size: 15px; }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .nav a { font-size: 15px; }
 
   .wrap { padding: 36px 24px; gap: 40px; }
-  .sidebar { max-width: none; }
+  .sidebar, .side-panel { max-width: none; }
+  .section-projects .side-panel { margin-top: 0; }
   .site-title { font-size: 28px; }
+
+  /* Topics become a row of chips you scroll sideways */
+  .topic-list { margin-top: 28px; padding-top: 18px; }
+  .topic-list .label { margin-bottom: 10px; }
+  .topic-list ul {
+    flex-direction: row;
+    gap: 8px;
+    overflow-x: auto;
+    white-space: nowrap;
+    margin: 0 -24px;
+    padding: 0 24px;
+    scrollbar-width: none;
+  }
+  .topic-list ul::-webkit-scrollbar { display: none; }
+  .topic-list a {
+    display: inline-block;
+    padding: 10px 14px;
+    border: 1px solid $border;
+    border-radius: 999px;
+    font-size: 14px;
+    line-height: 1;
+  }
+  .topic-list a.active { border-color: $heading; text-decoration: none; }
+
+  .note { grid-template-columns: minmax(0, 1fr); }
+  .row-line { flex-direction: column; gap: 2px; }
   .post-title { font-size: 30px; }
 }

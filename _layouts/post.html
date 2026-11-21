@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: writings
 ---
 <article>
   <h1 class="post-title">{{ page.title }}</h1>
@@ -7,7 +7,11 @@ layout: default
     {{ page.date | date: "%B %-d, %Y" }}
     {% if page.topic %}
       {% assign t = site.topics | where: "name", page.topic | first %}
-      · {% if t %}<a href="{{ '/topics/' | append: t.slug | append: '/' | relative_url }}">{{ page.topic }}</a>{% else %}{{ page.topic }}{% endif %}
+      · {% if t %}<a href="{{ '/writings/' | append: t.slug | append: '/' | relative_url }}">{{ page.topic }}</a>{% else %}{{ page.topic }}{% endif %}
+    {% endif %}
+    {% if page.project %}
+      {% assign proj = site.projects | where: "slug", page.project | first %}
+      {% if proj %} · Part of <a href="{{ proj.url | relative_url }}">{{ proj.title }}</a>{% endif %}
     {% endif %}
   </p>
   <div class="post-body">

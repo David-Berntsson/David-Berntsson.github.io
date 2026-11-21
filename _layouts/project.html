@@ -1,0 +1,48 @@
+---
+layout: default
+---
+<main class="content">
+  <a class="back" href="{{ '/projects/' | relative_url }}">← All projects</a>
+  <div class="project-head">
+    <h1 class="post-title">{{ page.title }}</h1>
+    {% include status.html status=page.status %}
+  </div>
+  {% if page.description %}<p class="lede">{{ page.description }}</p>{% endif %}
+
+  <div class="post-body">
+    {{ content }}
+  </div>
+
+  {% assign project_posts = site.posts | where: "project", page.slug %}
+  <h2 class="label section-label rule">Posts about this project</h2>
+  {% if project_posts.size > 0 %}
+    <ul class="rows">
+      {% for p in project_posts %}
+        <li class="row-line">
+          <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
+          <span class="meta">{{ p.date | date: "%b %-d, %Y" }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="empty">No posts about this project yet.</p>
+  {% endif %}
+</main>
+
+<aside class="side-panel" aria-label="Project details">
+  <h2 class="label">Details</h2>
+  <dl class="facts">
+    {% if page.status %}<div><dt>Status</dt><dd>{{ page.status }}</dd></div>{% endif %}
+    {% if page.started %}<div><dt>Started</dt><dd>{{ page.started | date: "%B %Y" }}</dd></div>{% endif %}
+    {% if page.finished %}<div><dt>Finished</dt><dd>{{ page.finished | date: "%B %Y" }}</dd></div>{% endif %}
+    {% if page.topic %}<div><dt>Topic</dt><dd>{{ page.topic }}</dd></div>{% endif %}
+    {% if page.built_with %}<div><dt>Built with</dt><dd>{{ page.built_with }}</dd></div>{% endif %}
+    {% if page.repo or page.demo %}
+      <div><dt>Links</dt><dd>
+        {% if page.repo %}<a href="{{ page.repo }}">Repository</a>{% endif %}
+        {% if page.repo and page.demo %}<br>{% endif %}
+        {% if page.demo %}<a href="{{ page.demo }}">Live demo</a>{% endif %}
+      </dd></div>
+    {% endif %}
+  </dl>
+</aside>

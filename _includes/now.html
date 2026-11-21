@@ -1,0 +1,55 @@
+{% comment %}
+  The "Now" panel on the About page. Everything here fills itself in:
+  - Working on: projects with `status: Active`
+  - Reading: books in _data/reading.yml with `status: reading`
+  - Latest writing: the newest post and the newest note
+{% endcomment %}
+{% assign now_projects = site.projects | where: "status", "Active" %}
+{% assign now_books = site.data.reading.books | where: "status", "reading" %}
+{% assign now_post = site.posts | first %}
+{% assign now_notes = site.notes | sort: "date" | reverse %}
+{% assign now_note = now_notes | first %}
+
+<h2 class="label">Now</h2>
+
+{% if now_projects.size > 0 %}
+  <div class="now-group">
+    <h3>Working on</h3>
+    {% for p in now_projects %}
+      <div class="now-item">
+        <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
+        {% if p.description %}<span class="meta">{{ p.description }}</span>{% endif %}
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+{% if now_books.size > 0 %}
+  <div class="now-group">
+    <h3>Reading</h3>
+    {% for b in now_books %}
+      <div class="now-item">
+        <a href="{{ '/reading/' | relative_url }}"><em>{{ b.title }}</em></a>
+        {% if b.author %}<span class="meta">{{ b.author }}</span>{% endif %}
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+{% if now_post or now_note %}
+  <div class="now-group">
+    <h3>Latest writing</h3>
+    {% if now_post %}
+      <div class="now-item">
+        <a href="{{ now_post.url | relative_url }}">{{ now_post.title }}</a>
+        <span class="meta">Post · {{ now_post.date | date: "%b %-d, %Y" }}</span>
+      </div>
+    {% endif %}
+    {% if now_note %}
+      <div class="now-item">
+        <a href="{{ '/notes/' | relative_url }}#{{ now_note.slug }}">{{ now_note.title }}</a>
+        <span class="meta">Note · {{ now_note.date | date: "%b %-d, %Y" }}</span>
+      </div>
+    {% endif %}
+  </div>
+{% endif %}

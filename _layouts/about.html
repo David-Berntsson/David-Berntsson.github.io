@@ -1,0 +1,30 @@
+---
+layout: default
+---
+<main class="content">
+  <h1 class="post-title">{{ page.title }}</h1>
+  <div class="post-body">
+    {{ content }}
+  </div>
+
+  <h2 class="label section-label">On this site</h2>
+  <ul class="site-map">
+    {% for s in site.sections %}
+      {% unless s.id == 'about' %}
+        <li>
+          <a href="{{ s.url | relative_url }}">{{ s.name }}</a>
+          {% if s.blurb %}<span class="meta">{{ s.blurb }}</span>{% endif %}
+        </li>
+      {% endunless %}
+    {% endfor %}
+  </ul>
+
+  {% if site.email %}
+    <h2 class="label section-label">Contact</h2>
+    <p class="contact">{% if site.email contains '@' %}<a href="mailto:{{ site.email }}">{{ site.email }}</a>{% else %}{{ site.email }}{% endif %}</p>
+  {% endif %}
+</main>
+
+<aside class="side-panel" aria-label="Now">
+  {% include now.html %}
+</aside>

@@ -1,0 +1,36 @@
+---
+layout: page
+section: projects
+title: Projects
+permalink: /projects/
+---
+<h1 class="post-title">Projects</h1>
+<p class="intro">Things I'm building or have built, each with the posts written along the way.</p>
+<p class="github-link"><a href="{{ site.github_url }}">View My GitHub Profile</a></p>
+
+{% comment %} Active projects first, then the rest; newest start date first within each. {% endcomment %}
+{% assign active_projects = site.projects | where: "status", "Active" | sort: "started" | reverse %}
+{% assign other_projects = site.projects | where_exp: "p", "p.status != 'Active'" | sort: "started" | reverse %}
+{% assign all_projects = active_projects | concat: other_projects %}
+
+{% if all_projects.size > 0 %}
+  <div class="entries">
+    {% for p in all_projects %}
+      {% assign n = site.posts | where: "project", p.slug | size %}
+      <article class="entry">
+        <div class="project-head">
+          <h2 class="entry-title"><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h2>
+          {% include status.html status=p.status %}
+        </div>
+        {% if p.description %}<p>{{ p.description }}</p>{% endif %}
+        <p class="meta">
+          <a href="{{ p.url | relative_url }}">Read more</a>
+          {% if n > 0 %} · {{ n }} post{% if n != 1 %}s{% endif %}{% endif %}
+          {% if p.started and p.finished %} · {{ p.started | date: "%B %Y" }} – {{ p.finished | date: "%B %Y" }}{% elsif p.started %} · Started {{ p.started | date: "%B %Y" }}{% endif %}
+        </p>
+      </article>
+    {% endfor %}
+  </div>
+{% else %}
+  <p class="empty">No projects here yet.</p>
+{% endif %}
