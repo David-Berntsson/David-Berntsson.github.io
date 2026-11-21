@@ -6,11 +6,17 @@
 $bg:      #161616;
 $border:  #2c2c2c;
 $surface: #1e1e1e;
-/* All text is white; hierarchy comes from size, weight and spacing. */
+/* Two text tones:
+   white      - headings, titles, links, the text you read
+   light grey - dates, labels, descriptions, inactive menu items */
 $text:    #ffffff;
-$muted:   #ffffff;
+$muted:   #b5b1aa;
 $heading: #ffffff;
 $link:    #ffffff;
+
+/* Project status colours */
+$status-active:   #8fd18a;  /* green */
+$status-finished: #e0b84f;  /* gold */
 $underline: #8a8780;  /* link underlines stay a soft grey so links are still visible */
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -47,6 +53,7 @@ h1, h2, h3, h4 { color: $heading; line-height: 1.25; letter-spacing: -0.01em; }
 
 .meta { margin: 0 0 16px; font-size: 14px; color: $muted; }
 .meta a { color: $muted; }
+.entry .meta a, .note-body .meta a { color: $link; }  /* "Read more" links stay white */
 .empty { font-size: 15px; font-style: italic; color: $muted; }
 
 /* ---------- Contour background: the same corners on every page ---------- */
@@ -175,7 +182,7 @@ th { color: $heading; }
 /* ---------- Shared pieces for the section pages ---------- */
 .intro { margin: -4px 0 32px; color: $muted; }
 .github-link { margin: -20px 0 32px; font-size: 16px; }
-.github-link a { color: $muted; }
+.github-link a { color: $link; }
 
 .section-label { margin: 40px 0 16px; }
 .section-label.rule { margin: 56px 0 0; padding-bottom: 16px; border-bottom: 1px solid $border; }
@@ -207,7 +214,7 @@ th { color: $heading; }
 .site-map a { font-size: 17px; text-decoration: none; }
 .site-map a:hover { text-decoration: underline; }
 .site-map .meta { margin: 0; font-size: 15px; }
-.contact { margin: 0; font-size: 16px; color: $muted; }
+.contact { margin: 0; font-size: 16px; color: $text; }
 
 /* Right-hand panel: Now (About) and Details (project pages) */
 .side-panel {
@@ -268,7 +275,8 @@ th { color: $heading; }
   text-transform: uppercase;
   color: $muted;
 }
-.status-active { color: $text; }
+.status-active { color: $status-active; }
+.status-finished { color: $status-finished; }
 .back { display: inline-block; margin-bottom: 28px; font-size: 15px; color: $muted; }
 .lede { margin: 0 0 32px; font-size: 20px; color: $muted; }
 .lede + .post-body h2:first-child { margin-top: 0; }
