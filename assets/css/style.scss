@@ -54,15 +54,15 @@ body::before {
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background: url("../images/bg/home.svg") center / cover no-repeat;
+  background: url("../images/bg/home.svg?v={{ site.time | date: "%s" }}") center / cover no-repeat;
 }
-body.bg-mathematics::before              { background-image: url("../images/bg/mathematics.svg"); }
-body.bg-computer-science::before         { background-image: url("../images/bg/computer-science.svg"); }
-body.bg-artificial-intelligence::before  { background-image: url("../images/bg/artificial-intelligence.svg"); }
-body.bg-finance::before                  { background-image: url("../images/bg/finance.svg"); }
-body.bg-education::before                { background-image: url("../images/bg/education.svg"); }
-body.bg-literature-philosophy::before    { background-image: url("../images/bg/literature-philosophy.svg"); }
-body.bg-other::before                    { background-image: url("../images/bg/other.svg"); }
+body.bg-mathematics::before              { background-image: url("../images/bg/mathematics.svg?v={{ site.time | date: "%s" }}"); }
+body.bg-computer-science::before         { background-image: url("../images/bg/computer-science.svg?v={{ site.time | date: "%s" }}"); }
+body.bg-artificial-intelligence::before  { background-image: url("../images/bg/artificial-intelligence.svg?v={{ site.time | date: "%s" }}"); }
+body.bg-finance::before                  { background-image: url("../images/bg/finance.svg?v={{ site.time | date: "%s" }}"); }
+body.bg-education::before                { background-image: url("../images/bg/education.svg?v={{ site.time | date: "%s" }}"); }
+body.bg-literature-philosophy::before    { background-image: url("../images/bg/literature-philosophy.svg?v={{ site.time | date: "%s" }}"); }
+body.bg-other::before                    { background-image: url("../images/bg/other.svg?v={{ site.time | date: "%s" }}"); }
 
 /* ---------- Topics bar ---------- */
 .topics { border-bottom: 1px solid $border; }
