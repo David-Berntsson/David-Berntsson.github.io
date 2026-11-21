@@ -1,9 +1,28 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: 'en-US' }}">
+<html lang="{{ site.lang | default: 'en-US' }}" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% comment %}
+    Light/dark mode: use the visitor's saved choice if they have one,
+    otherwise follow their device setting. Runs before the page is drawn,
+    so it never flashes the wrong colours.
+  {% endcomment %}
+  <script>
+    (function () {
+      var theme = 'dark';
+      try {
+        var saved = localStorage.getItem('theme');
+        if (saved === 'light' || saved === 'dark') theme = saved;
+        else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) theme = 'light';
+      } catch (e) {}
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
   {% seo %}
+  <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" sizes="any">
+  <link rel="icon" href="{{ '/favicon.svg' | relative_url }}" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="{{ '/apple-touch-icon.png' | relative_url }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
@@ -15,5 +34,26 @@
   <div class="wrap">
     {{ content }}
   </div>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var button = document.getElementById('theme-toggle');
+      if (!button) return;
+      function label() {
+        var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        var text = 'Switch to ' + next + ' mode';
+        button.setAttribute('aria-label', text);
+        button.setAttribute('title', text);
+      }
+      label();
+      button.addEventListener('click', function () {
+        var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        root.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) {}
+        label();
+      });
+    })();
+  </script>
 </body>
 </html>

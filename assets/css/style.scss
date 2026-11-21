@@ -1,23 +1,61 @@
 ---
 ---
 
-/* David's homepage: clean dark serif theme */
+/* David's homepage: serif theme with a dark and a light mode.
 
-$bg:      #161616;
-$border:  #2c2c2c;
-$surface: #1e1e1e;
-/* Two text tones:
-   white      - headings, titles, links, the text you read
-   light grey - dates, labels, descriptions, inactive menu items */
-$text:    #ffffff;
-$muted:   #d2cec7;
-$heading: #ffffff;
-$link:    #ffffff;
+   ALL COLOURS LIVE HERE. Edit the dark mode block and the light mode block below.
+   - text / heading / link: the main text colour
+   - muted: the grey for dates, labels, descriptions, inactive menu items
+   - underline: the soft line under links
+   - status-active / status-finished: project status colours
+*/
 
-/* Project status colours */
-$status-active:   #8fd18a;  /* green */
-$status-finished: #e0b84f;  /* gold */
-$underline: #8a8780;  /* link underlines stay a soft grey so links are still visible */
+/* Dark mode (the default) */
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg:              #161616;
+  --border:          #2c2c2c;
+  --surface:         #1e1e1e;
+  --text:            #ffffff;
+  --muted:           #d2cec7;
+  --heading:         #ffffff;
+  --link:            #ffffff;
+  --underline:       #8a8780;
+  --status-active:   #8fd18a;  /* green */
+  --status-finished: #e0b84f;  /* gold */
+  --contours-top:    url("../images/bg/contours-top.svg?v={{ site.time | date: '%s' }}");
+  --contours-bottom: url("../images/bg/contours-bottom.svg?v={{ site.time | date: '%s' }}");
+}
+
+/* Light mode */
+[data-theme="light"] {
+  color-scheme: light;
+  --bg:              #faf9f6;
+  --border:          #e2dfd8;
+  --surface:         #f0eee9;
+  --text:            #161616;
+  --muted:           #5c5852;
+  --heading:         #161616;
+  --link:            #161616;
+  --underline:       #a8a49d;
+  --status-active:   #2e7d32;  /* green */
+  --status-finished: #9a6a00;  /* gold */
+  --contours-top:    url("../images/bg/contours-top-light.svg?v={{ site.time | date: '%s' }}");
+  --contours-bottom: url("../images/bg/contours-bottom-light.svg?v={{ site.time | date: '%s' }}");
+}
+
+/* The rest of this file uses these names, so it follows the mode automatically. */
+$bg:      var(--bg);
+$border:  var(--border);
+$surface: var(--surface);
+$text:    var(--text);
+$muted:   var(--muted);
+$heading: var(--heading);
+$link:    var(--link);
+$underline: var(--underline);
+$status-active:   var(--status-active);
+$status-finished: var(--status-finished);
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -38,7 +76,7 @@ a {
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
-a:hover, a:focus { color: #fff; text-decoration-color: #fff; }
+a:hover, a:focus { color: $heading; text-decoration-color: $heading; }
 
 h1, h2, h3, h4 { color: $heading; line-height: 1.25; letter-spacing: -0.01em; }
 
@@ -64,8 +102,8 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background:
-    url("../images/bg/contours-top.svg?v={{ site.time | date: '%s' }}") center top / 100% auto no-repeat,
-    url("../images/bg/contours-bottom.svg?v={{ site.time | date: '%s' }}") center bottom / 100% auto no-repeat;
+    var(--contours-top) center top / 100% auto no-repeat,
+    var(--contours-bottom) center bottom / 100% auto no-repeat;
 }
 
 /* ---------- Section bar ---------- */
@@ -76,9 +114,36 @@ body::before {
   margin: 0 auto;
   padding: 22px 40px;
   display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.nav-links {
+  flex: 1;
+  min-width: 0;
+  display: flex;
   flex-wrap: wrap;
   gap: 8px 28px;
 }
+
+/* Light/dark toggle: shows a sun in dark mode, a moon in light mode */
+.theme-toggle {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid $border;
+  border-radius: 999px;
+  background: transparent;
+  color: $heading;
+  cursor: pointer;
+}
+.theme-toggle:hover, .theme-toggle:focus-visible { border-color: $muted; }
+.theme-toggle .icon-moon { display: none; }
+[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+[data-theme="light"] .theme-toggle .icon-moon { display: block; }
 
 .nav a {
   padding: 10px 0;
@@ -105,7 +170,7 @@ body::before {
 }
 
 /* ---------- Sidebar (Reflections & Writings only) ---------- */
-.sidebar { flex: 1 1 260px; max-width: 300px; }
+.sidebar { flex: 1 1 260px; min-width: 0; max-width: 300px; }
 
 .site-title { margin: 0 0 8px; font-size: 32px; font-weight: 400; }
 .site-title a { color: $heading; text-decoration: none; }
@@ -310,15 +375,15 @@ th { color: $heading; }
   body { font-size: 17px; }
   body::before { background-size: 160% auto, 160% auto; background-position: right top, left bottom; }
 
-  .nav-inner {
+  .nav-inner { padding: 10px 16px 10px 24px; gap: 12px; }
+  .nav-links {
     flex-wrap: nowrap;
     overflow-x: auto;
     white-space: nowrap;
-    padding: 14px 24px;
     gap: 22px;
     scrollbar-width: none;
   }
-  .nav-inner::-webkit-scrollbar { display: none; }
+  .nav-links::-webkit-scrollbar { display: none; }
   .nav a { font-size: 15px; }
 
   .wrap { padding: 36px 24px; gap: 40px; }
