@@ -24,8 +24,6 @@
   --underline:       #8a8780;
   --status-active:   #8fd18a;  /* green */
   --status-finished: #e0b84f;  /* gold */
-  --contours-top:    url("../images/bg/contours-top.svg?v={{ site.time | date: '%s' }}");
-  --contours-bottom: url("../images/bg/contours-bottom.svg?v={{ site.time | date: '%s' }}");
 }
 
 /* Light mode */
@@ -41,8 +39,6 @@
   --underline:       #a8a49d;
   --status-active:   #2e7d32;  /* green */
   --status-finished: #9a6a00;  /* gold */
-  --contours-top:    url("../images/bg/contours-top-light.svg?v={{ site.time | date: '%s' }}");
-  --contours-bottom: url("../images/bg/contours-bottom-light.svg?v={{ site.time | date: '%s' }}");
 }
 
 /* The rest of this file uses these names, so it follows the mode automatically. */
@@ -102,8 +98,14 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background:
-    var(--contours-top) center top / 100% auto no-repeat,
-    var(--contours-bottom) center bottom / 100% auto no-repeat;
+    url("../images/bg/contours-top.svg?v={{ site.time | date: '%s' }}") center top / 100% auto no-repeat,
+    url("../images/bg/contours-bottom.svg?v={{ site.time | date: '%s' }}") center bottom / 100% auto no-repeat;
+}
+/* Light mode: the same contours drawn in dark lines */
+[data-theme="light"] body::before {
+  background-image:
+    url("../images/bg/contours-top-light.svg?v={{ site.time | date: '%s' }}"),
+    url("../images/bg/contours-bottom-light.svg?v={{ site.time | date: '%s' }}");
 }
 
 /* ---------- Section bar ---------- */
