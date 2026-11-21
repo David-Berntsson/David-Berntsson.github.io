@@ -32,11 +32,11 @@
   --bg:              #faf9f6;
   --border:          #e2dfd8;
   --surface:         #f0eee9;
-  --text:            #161616;
-  --muted:           #5c5852;
-  --heading:         #161616;
-  --link:            #161616;
-  --underline:       #a8a49d;
+  --text:            #1f1b16;  /* soft near-black */
+  --muted:           #6b5844;  /* ink brown: dates, labels, descriptions, inactive menu items */
+  --heading:         #1f1b16;
+  --link:            #1f1b16;
+  --underline:       #b9a993;  /* warm underline to match the brown */
   --status-active:   #2e7d32;  /* green */
   --status-finished: #9a6a00;  /* gold */
 }
@@ -103,6 +103,7 @@ body::before {
 }
 /* Light mode: the same contours drawn in dark lines */
 [data-theme="light"] body::before {
+  opacity: 0.6;  /* fainter on light, so the lines stay behind the text */
   background-image:
     url("../images/bg/contours-top-light.svg?v={{ site.time | date: '%s' }}"),
     url("../images/bg/contours-bottom-light.svg?v={{ site.time | date: '%s' }}");
