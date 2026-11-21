@@ -10,7 +10,7 @@ $surface: #1e1e1e;
    white      - headings, titles, links, the text you read
    light grey - dates, labels, descriptions, inactive menu items */
 $text:    #ffffff;
-$muted:   #dcd9d3;
+$muted:   #d2cec7;
 $heading: #ffffff;
 $link:    #ffffff;
 
@@ -83,7 +83,7 @@ body::before {
 .nav a {
   padding: 10px 0;
   font-size: 16px;
-  color: $link;
+  color: $muted;
   text-decoration: none;
 }
 .nav a:hover { color: $heading; }
