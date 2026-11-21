@@ -22,7 +22,7 @@ topics:
     slug: artificial-intelligence
   - name: Finance
     slug: finance
-  - name: Literature & Philosophy 
-    slug: literature-philosophy    
+  - name: "Literature & Philosophy"
+    slug: literature-philosophy
   - name: Other
     slug: other
