@@ -13,7 +13,8 @@ $link:    #e8e5df;
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html, body { margin: 0; background: $bg; }
+html { background: $bg; }
+body { margin: 0; background: transparent; }
 
 body {
   color: $text;
@@ -45,6 +46,23 @@ h1, h2, h3, h4 { color: $heading; line-height: 1.25; letter-spacing: -0.01em; }
 .meta { margin: 0 0 16px; font-size: 14px; color: $muted; }
 .meta a { color: $muted; }
 .empty { font-size: 15px; font-style: italic; color: $muted; }
+
+/* ---------- Contour background, one variation per page ---------- */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: url("../images/bg/home.svg") center / cover no-repeat;
+}
+body.bg-mathematics::before              { background-image: url("../images/bg/mathematics.svg"); }
+body.bg-computer-science::before         { background-image: url("../images/bg/computer-science.svg"); }
+body.bg-artificial-intelligence::before  { background-image: url("../images/bg/artificial-intelligence.svg"); }
+body.bg-finance::before                  { background-image: url("../images/bg/finance.svg"); }
+body.bg-education::before                { background-image: url("../images/bg/education.svg"); }
+body.bg-literature-philosophy::before    { background-image: url("../images/bg/literature-philosophy.svg"); }
+body.bg-other::before                    { background-image: url("../images/bg/other.svg"); }
 
 /* ---------- Topics bar ---------- */
 .topics { border-bottom: 1px solid $border; }
@@ -158,6 +176,7 @@ th { color: $heading; }
 /* ---------- Phones ---------- */
 @media (max-width: 720px) {
   body { font-size: 17px; }
+  body::before { background-position: 80% top; }
 
   .topics-inner {
     flex-wrap: nowrap;
