@@ -1,0 +1,32 @@
+---
+layout: default
+---
+{% comment %} The page for one book or article, opened with "Read more". {% endcomment %}
+<main class="content">
+  <a class="back" href="{{ '/reading/' | relative_url }}">← Articles &amp; Books</a>
+  <h1 class="post-title">{% if page.kind == "book" %}<em>{{ page.title }}</em>{% else %}{{ page.title }}{% endif %}</h1>
+  {% if page.author or page.source %}<p class="lede">{% if page.author %}by {{ page.author }}{% else %}{{ page.source }}{% endif %}</p>{% endif %}
+  {% if page.note %}<p class="summary">{{ page.note }}</p>{% endif %}
+
+  <div class="post-body">
+    {{ content }}
+  </div>
+
+  {% if page.post %}
+    {% assign related = site.posts | where: "url", page.post | first %}
+    <p class="related">I wrote more about this in <a href="{{ page.post | relative_url }}">{% if related %}{{ related.title }}{% else %}a post{% endif %}</a>.</p>
+  {% endif %}
+</main>
+
+<aside class="side-panel" aria-label="Details">
+  <h2 class="label">Details</h2>
+  <dl class="facts">
+    <div><dt>Type</dt><dd>{% if page.kind == "book" %}Book{% else %}Article{% endif %}</dd></div>
+    {% if page.author %}<div><dt>Author</dt><dd>{{ page.author }}</dd></div>{% endif %}
+    {% if page.source %}<div><dt>Source</dt><dd>{{ page.source }}</dd></div>{% endif %}
+    {% if page.status == "reading" %}<div><dt>Status</dt><dd>Reading now</dd></div>
+    {% elsif page.read %}<div><dt>Read</dt><dd>{{ page.read | date: "%B %Y" }}</dd></div>{% endif %}
+    {% if page.topic %}<div><dt>Topic</dt><dd>{{ page.topic }}</dd></div>{% endif %}
+    {% if page.link %}<div><dt>Link</dt><dd><a href="{{ page.link }}">Read the original</a></dd></div>{% endif %}
+  </dl>
+</aside>

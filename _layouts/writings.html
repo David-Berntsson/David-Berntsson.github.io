@@ -7,8 +7,8 @@ layout: default
 {% endcomment %}
 {% assign active_topic = page.topic_filter | default: page.topic %}
 <aside class="sidebar">
-  <h1 class="site-title"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
-  <p class="site-desc">{{ site.description }}</p>
+  <h1 class="site-title"><a href="{{ '/writings/' | relative_url }}">{{ site.writings_title }}</a></h1>
+  <p class="site-desc">{{ site.writings_description }}</p>
 
   <div class="topic-list">
     <h2 class="label">Topics</h2>

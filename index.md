@@ -1,7 +1,7 @@
 ---
 layout: about
 section: about
-title: About
+title: About me
 ---
 Hi, I'm David. [A few sentences about who you are: what you study or work on, and what you're curious about.]
 

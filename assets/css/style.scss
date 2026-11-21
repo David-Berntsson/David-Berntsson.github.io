@@ -6,10 +6,12 @@
 $bg:      #161616;
 $border:  #2c2c2c;
 $surface: #1e1e1e;
-$text:    #d6d3cd;
-$muted:   #c4c0b9;
-$heading: #f3f1ed;
-$link:    #e8e5df;
+/* All text is white; hierarchy comes from size, weight and spacing. */
+$text:    #ffffff;
+$muted:   #ffffff;
+$heading: #ffffff;
+$link:    #ffffff;
+$underline: #8a8780;  /* link underlines stay a soft grey so links are still visible */
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -26,7 +28,7 @@ body {
 
 a {
   color: $link;
-  text-decoration-color: $muted;
+  text-decoration-color: $underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
@@ -266,10 +268,15 @@ th { color: $heading; }
   text-transform: uppercase;
   color: $muted;
 }
-.status-active { color: #a9c48f; }
+.status-active { color: $text; }
 .back { display: inline-block; margin-bottom: 28px; font-size: 15px; color: $muted; }
 .lede { margin: 0 0 32px; font-size: 20px; color: $muted; }
 .lede + .post-body h2:first-child { margin-top: 0; }
+
+/* Book and article pages */
+.summary { margin: -16px 0 32px; font-style: italic; }
+.related { margin: 32px 0 0; padding-top: 16px; border-top: 1px solid $border; font-size: 16px; }
+.section-reading .side-panel { margin-top: 74px; }
 
 /* Notes */
 .note {
@@ -282,6 +289,9 @@ th { color: $heading; }
 }
 .note > .meta { margin: 0; padding-top: 3px; }
 .note-title { margin: 0 0 6px; font-size: 17px; font-weight: 600; line-height: 1.5; }
+.note-title a { text-decoration: none; }
+.note-title a:hover { text-decoration: underline; }
+.note-body .meta { margin: 0; font-size: 15px; }
 .note-body { font-size: 17px; min-width: 0; }
 .note-body p { margin: 0 0 12px; }
 .note-body > :last-child { margin-bottom: 0; }
@@ -305,7 +315,7 @@ th { color: $heading; }
 
   .wrap { padding: 36px 24px; gap: 40px; }
   .sidebar, .side-panel { max-width: none; }
-  .section-projects .side-panel { margin-top: 0; }
+  .section-projects .side-panel, .section-reading .side-panel { margin-top: 0; }
   .site-title { font-size: 28px; }
 
   /* Topics become a row of chips you scroll sideways */

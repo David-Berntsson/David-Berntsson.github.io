@@ -4,7 +4,10 @@ section: notes
 title: Notes
 permalink: /notes/
 ---
-{% comment %} Every file in _notes/ appears here, newest first. {% endcomment %}
+{% comment %}
+  Every file in _notes/ appears here, newest first. The list shows each
+  note's first paragraph; "Read more" appears when the note is longer.
+{% endcomment %}
 {% assign notes = site.notes | sort: "date" | reverse %}
 
 <h1 class="post-title">Notes</h1>
@@ -13,11 +16,17 @@ permalink: /notes/
 {% if notes.size > 0 %}
   <div class="entries">
     {% for note in notes %}
+      {% assign parts = note.content | split: "</p>" %}
       <article class="note" id="{{ note.slug }}">
         <time class="meta" datetime="{{ note.date | date_to_xmlschema }}">{{ note.date | date: "%b %-d, %Y" }}</time>
         <div class="note-body">
-          {% unless note.hide_title %}<h2 class="note-title">{{ note.title }}</h2>{% endunless %}
-          {{ note.content }}
+          {% unless note.hide_title %}<h2 class="note-title"><a href="{{ note.url | relative_url }}">{{ note.title }}</a></h2>{% endunless %}
+          {% if parts.size > 2 %}
+            {{ parts.first | append: "</p>" }}
+            <p class="meta"><a href="{{ note.url | relative_url }}">Read more</a></p>
+          {% else %}
+            {{ note.content }}
+          {% endif %}
         </div>
       </article>
     {% endfor %}

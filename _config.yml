@@ -1,6 +1,10 @@
 theme: jekyll-theme-minimal
 title: David's homepage
 description: Various thoughts and reflections
+
+# The heading and line at the top of the Reflections & Writings sidebar.
+writings_title: Working Thoughts
+writings_description: Longer pieces on computer science, mathematics, AI, finance and philosophy.
 github_url: https://github.com/David-Berntsson
 email: "[your email]"   # shown under Contact on the About page
 
@@ -14,7 +18,7 @@ permalink: /posts/:year/:month/:title/
 # "blurb" is the line shown under each section on the About page.
 # "id" must match the `section:` of the pages that belong to it.
 sections:
-  - name: About
+  - name: About me
     id: about
     url: /
   - name: "Reflections & Writings"
@@ -52,14 +56,20 @@ topics:
   - name: Other
     slug: other
 
-# Projects: one file per project in _projects/, each with its own page.
-# Notes: one file per note in _notes/, all shown together on /notes/.
+# Each of these is a folder with one file per item, and each item gets its own page.
+# Projects: _projects/ -> /projects/<file name>/
+# Books and articles: _reading/ -> /reading/<file name>/
+# Notes: _notes/ -> /notes/<file name without the date>/
 collections:
   projects:
     output: true
     permalink: /projects/:name/
+  reading:
+    output: true
+    permalink: /reading/:name/
   notes:
-    output: false
+    output: true
+    permalink: /notes/:title/
 
 defaults:
   - scope:
@@ -74,3 +84,15 @@ defaults:
     values:
       layout: project
       section: projects
+  - scope:
+      path: ""
+      type: reading
+    values:
+      layout: reading-item
+      section: reading
+  - scope:
+      path: ""
+      type: notes
+    values:
+      layout: note
+      section: notes

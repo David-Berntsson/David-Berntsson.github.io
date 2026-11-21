@@ -4,24 +4,30 @@ section: reading
 title: "Articles & Books"
 permalink: /reading/
 ---
-{% comment %} Everything on this page comes from _data/reading.yml. {% endcomment %}
-{% assign books = site.data.reading.books %}
-{% assign articles = site.data.reading.articles %}
+{% comment %}
+  Every file in _reading/ appears here. Books being read come first,
+  then everything else, most recently read first.
+{% endcomment %}
+{% assign all_books = site.reading | where: "kind", "book" %}
+{% assign books_now = all_books | where: "status", "reading" %}
+{% assign books_done = all_books | where_exp: "b", "b.status != 'reading'" | sort: "read" | reverse %}
+{% assign books = books_now | concat: books_done %}
+{% assign articles = site.reading | where: "kind", "article" | sort: "read" | reverse %}
 
 <h1 class="post-title">Articles &amp; Books</h1>
 <p class="intro">What I've been reading, with a few words on each.</p>
 
 <h2 class="label section-label rule">Books</h2>
-{% if books and books.size > 0 %}
+{% if books.size > 0 %}
   <div class="entries">
     {% for b in books %}
       <article class="entry reading-entry">
-        <p class="entry-title"><em>{{ b.title }}</em>{% if b.author %} <span class="by">— {{ b.author }}</span>{% endif %}</p>
+        <p class="entry-title"><a href="{{ b.url | relative_url }}"><em>{{ b.title }}</em></a>{% if b.author %} <span class="by">— {{ b.author }}</span>{% endif %}</p>
         {% if b.note %}<p>{{ b.note }}</p>{% endif %}
         <p class="meta">
-          {% if b.status == "reading" %}Reading now{% elsif b.read %}Read {{ b.read | date: "%B %Y" }}{% endif %}
+          <a href="{{ b.url | relative_url }}">Read more</a>
+          {% if b.status == "reading" %} · Reading now{% elsif b.read %} · Read {{ b.read | date: "%B %Y" }}{% endif %}
           {% if b.topic %} · {{ b.topic }}{% endif %}
-          {% if b.post %} · <a href="{{ b.post | relative_url }}">My notes</a>{% endif %}
         </p>
       </article>
     {% endfor %}
@@ -31,15 +37,16 @@ permalink: /reading/
 {% endif %}
 
 <h2 class="label section-label rule">Articles</h2>
-{% if articles and articles.size > 0 %}
+{% if articles.size > 0 %}
   <div class="entries">
     {% for a in articles %}
       <article class="entry reading-entry">
-        <p class="entry-title">{% if a.url %}<a href="{{ a.url }}">{{ a.title }}</a>{% else %}{{ a.title }}{% endif %}{% if a.source %} <span class="by">— {{ a.source }}</span>{% endif %}</p>
+        <p class="entry-title"><a href="{{ a.url | relative_url }}">{{ a.title }}</a>{% if a.source %} <span class="by">— {{ a.source }}</span>{% endif %}</p>
         {% if a.note %}<p>{{ a.note }}</p>{% endif %}
         <p class="meta">
-          {% if a.read %}{{ a.read | date: "%B %Y" }}{% endif %}
-          {% if a.read and a.topic %} · {% endif %}{% if a.topic %}{{ a.topic }}{% endif %}
+          <a href="{{ a.url | relative_url }}">Read more</a>
+          {% if a.read %} · {{ a.read | date: "%B %Y" }}{% endif %}
+          {% if a.topic %} · {{ a.topic }}{% endif %}
         </p>
       </article>
     {% endfor %}

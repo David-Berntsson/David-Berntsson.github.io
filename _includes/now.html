@@ -1,11 +1,11 @@
 {% comment %}
   The "Now" panel on the About page. Everything here fills itself in:
   - Working on: projects with `status: Active`
-  - Reading: books in _data/reading.yml with `status: reading`
+  - Reading: books in _reading/ with `status: reading`
   - Latest writing: the newest post and the newest note
 {% endcomment %}
 {% assign now_projects = site.projects | where: "status", "Active" %}
-{% assign now_books = site.data.reading.books | where: "status", "reading" %}
+{% assign now_books = site.reading | where: "kind", "book" | where: "status", "reading" %}
 {% assign now_post = site.posts | first %}
 {% assign now_notes = site.notes | sort: "date" | reverse %}
 {% assign now_note = now_notes | first %}
@@ -29,7 +29,7 @@
     <h3>Reading</h3>
     {% for b in now_books %}
       <div class="now-item">
-        <a href="{{ '/reading/' | relative_url }}"><em>{{ b.title }}</em></a>
+        <a href="{{ b.url | relative_url }}"><em>{{ b.title }}</em></a>
         {% if b.author %}<span class="meta">{{ b.author }}</span>{% endif %}
       </div>
     {% endfor %}
@@ -47,7 +47,7 @@
     {% endif %}
     {% if now_note %}
       <div class="now-item">
-        <a href="{{ '/notes/' | relative_url }}#{{ now_note.slug }}">{{ now_note.title }}</a>
+        <a href="{{ now_note.url | relative_url }}">{{ now_note.title }}</a>
         <span class="meta">Note · {{ now_note.date | date: "%b %-d, %Y" }}</span>
       </div>
     {% endif %}
