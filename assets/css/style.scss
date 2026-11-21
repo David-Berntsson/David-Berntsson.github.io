@@ -55,8 +55,8 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background:
-    url("../images/bg/contours-top-right.svg?v={{ site.time | date: '%s' }}") right top / 480px auto no-repeat,
-    url("../images/bg/contours-bottom-left.svg?v={{ site.time | date: '%s' }}") left bottom / 432px auto no-repeat;
+    url("../images/bg/contours-top.svg?v={{ site.time | date: '%s' }}") center top / 100% auto no-repeat,
+    url("../images/bg/contours-bottom.svg?v={{ site.time | date: '%s' }}") center bottom / 100% auto no-repeat;
 }
 
 /* ---------- Topics bar ---------- */
@@ -171,7 +171,7 @@ th { color: $heading; }
 /* ---------- Phones ---------- */
 @media (max-width: 720px) {
   body { font-size: 17px; }
-  body::before { background-size: 300px auto, 270px auto; }
+  body::before { background-size: 160% auto, 160% auto; background-position: right top, left bottom; }
 
   .topics-inner {
     flex-wrap: nowrap;
