@@ -47,22 +47,17 @@ h1, h2, h3, h4 { color: $heading; line-height: 1.25; letter-spacing: -0.01em; }
 .meta a { color: $muted; }
 .empty { font-size: 15px; font-style: italic; color: $muted; }
 
-/* ---------- Contour background, one variation per page ---------- */
+/* ---------- Contour background: the same corners on every page ---------- */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background: url("../images/bg/home.svg?v={{ site.time | date: "%s" }}") center / cover no-repeat;
+  background:
+    url("../images/bg/contours-top-right.svg?v={{ site.time | date: '%s' }}") right top / 480px auto no-repeat,
+    url("../images/bg/contours-bottom-left.svg?v={{ site.time | date: '%s' }}") left bottom / 432px auto no-repeat;
 }
-body.bg-mathematics::before              { background-image: url("../images/bg/mathematics.svg?v={{ site.time | date: "%s" }}"); }
-body.bg-computer-science::before         { background-image: url("../images/bg/computer-science.svg?v={{ site.time | date: "%s" }}"); }
-body.bg-artificial-intelligence::before  { background-image: url("../images/bg/artificial-intelligence.svg?v={{ site.time | date: "%s" }}"); }
-body.bg-finance::before                  { background-image: url("../images/bg/finance.svg?v={{ site.time | date: "%s" }}"); }
-body.bg-education::before                { background-image: url("../images/bg/education.svg?v={{ site.time | date: "%s" }}"); }
-body.bg-literature-philosophy::before    { background-image: url("../images/bg/literature-philosophy.svg?v={{ site.time | date: "%s" }}"); }
-body.bg-other::before                    { background-image: url("../images/bg/other.svg?v={{ site.time | date: "%s" }}"); }
 
 /* ---------- Topics bar ---------- */
 .topics { border-bottom: 1px solid $border; }
@@ -176,7 +171,7 @@ th { color: $heading; }
 /* ---------- Phones ---------- */
 @media (max-width: 720px) {
   body { font-size: 17px; }
-  body::before { background-position: 80% top; }
+  body::before { background-size: 300px auto, 270px auto; }
 
   .topics-inner {
     flex-wrap: nowrap;
