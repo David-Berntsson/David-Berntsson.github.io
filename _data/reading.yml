@@ -20,6 +20,30 @@
 #     topic: Artificial Intelligence
 #     note: Why it's worth reading.
 
-books: []
+# PLACEHOLDERS below: replace the [bracketed] text, or delete the entries.
+books:
+  - title: "[Book title]"
+    author: "[Author]"
+    status: reading
+    topic: Mathematics
+    note: "[One or two sentences on what stayed with you.]"
+  - title: "[Book title]"
+    author: "[Author]"
+    read: 2026-11-01
+    topic: "Literature & Philosophy"
+    note: "[One or two sentences on what stayed with you.]"
+    post: /posts/2026/11/welcome/
 
-articles: []
+articles:
+  - title: "[Article title]"
+    source: "[Publication or author]"
+    url: https://example.com
+    read: 2026-11-01
+    topic: Artificial Intelligence
+    note: "[Why it's worth reading.]"
+  - title: "[Article title]"
+    source: "[Publication or author]"
+    url: https://example.com
+    read: 2026-10-01
+    topic: Finance
+    note: "[Why it's worth reading.]"
