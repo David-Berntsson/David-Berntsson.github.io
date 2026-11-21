@@ -2,11 +2,9 @@ theme: jekyll-theme-minimal
 title: David's homepage
 description: Various thoughts and reflections
 github_url: https://github.com/David-Berntsson
-url: https://david-berntsson.github.io
 
 plugins:
   - jekyll-seo-tag
-  - jekyll-feed   # RSS/Atom feed at /feed.xml
 
 # Post URLs look like /posts/2026/11/my-post-title/
 permalink: /posts/:year/:month/:title/

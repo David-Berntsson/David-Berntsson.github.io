@@ -102,8 +102,7 @@ body::before {
 .site-title a { color: $heading; text-decoration: none; }
 
 .site-desc { margin: 0 0 16px; font-size: 16px; color: $muted; }
-.links { margin: 0; font-size: 16px; color: $muted; }
-.links a { color: $muted; }
+.github { font-size: 16px; color: $muted; }
 
 .post-list {
   margin-top: 40px;
@@ -161,72 +160,13 @@ pre {
   padding: 1em;
   overflow-x: auto;
 }
-pre code { padding: 0; background: transparent; font-size: 1em; } /* don't shrink twice */
-div.highlight { background: transparent; margin: 0 0 20px; }
+pre code { padding: 0; background: transparent; }
+.highlight { background: $surface; }
+.highlight .c, .highlight .c1, .highlight .cm { color: $muted; font-style: italic; }
 
-/* ---------- Syntax highlighting (Rouge token classes) ---------- */
-$syn-comment:  #8f8a82;
-$syn-keyword:  #c9a7e0;  /* lavender */
-$syn-string:   #a9c48f;  /* sage */
-$syn-number:   #e0a07e;  /* terracotta */
-$syn-function: #8ec5c0;  /* teal */
-$syn-type:     #e3c58b;  /* sand */
-$syn-builtin:  #93b8d9;  /* slate blue */
-
-.highlight {
-  color: $text;
-  .c, .c1, .cm, .cs, .ch, .cd { color: $syn-comment; font-style: italic; }
-  .cp, .cpf { color: $syn-type; }
-  .k, .kd, .kn, .kp, .kr, .kv, .ow { color: $syn-keyword; }
-  .kc, .kt { color: $syn-type; }
-  .s, .s1, .s2, .sa, .sb, .sc, .sd, .sh, .sx, .dl { color: $syn-string; }
-  .si, .se, .sr, .ss { color: $syn-number; }
-  .m, .mi, .mf, .mh, .mo, .mb, .mx, .il { color: $syn-number; }
-  .nf, .fm, .nl { color: $syn-function; }
-  .nc, .nn, .ne { color: $syn-type; }
-  .nb, .bp, .vc, .vg, .vi { color: $syn-builtin; }
-  .nd, .na { color: $syn-type; }
-  .nt { color: $syn-keyword; }
-  .nv { color: $syn-builtin; }
-  .o, .p { color: $muted; }
-  .err { color: #e88; }
-  .gi { color: $syn-string; background: rgba(169, 196, 143, 0.08); }
-  .gd { color: #e88; background: rgba(238, 136, 136, 0.08); }
-  .gh, .gu { color: $syn-builtin; font-weight: 600; }
-  .ge { font-style: italic; }
-  .gs { font-weight: 600; }
-}
-
-/* ---------- Maths (KaTeX) ---------- */
-.katex { font-size: 1.05em; }
-.katex-display { margin: 1.2em 0; overflow-x: auto; overflow-y: hidden; padding: 4px 0; }
-
-/* ---------- Footnotes (kramdown [^1] syntax) ---------- */
-a.footnote {
-  text-decoration: none;
-  font-size: 0.75em;
-  padding: 0 0.1em;
-  color: $muted;
-}
-a.footnote::before { content: "["; }
-a.footnote::after  { content: "]"; }
-a.footnote:hover { color: #fff; }
-sup[role="doc-noteref"] { line-height: 0; }
-
-.footnotes {
-  margin-top: 3em;
-  padding-top: 1.2em;
-  border-top: 1px solid $border;
-  font-size: 15px;
-  line-height: 1.55;
-  color: $muted;
-  ol { padding-left: 1.4em; margin: 0; }
-  li { margin-bottom: 0.6em; }
-  li p { margin: 0; }
-  li:target { color: $heading; }
-}
-a.reversefootnote { text-decoration: none; margin-left: 0.3em; color: $muted; }
-a.reversefootnote:hover { color: #fff; }
+table { border-collapse: collapse; width: 100%; }
+th, td { border-bottom: 1px solid $border; padding: 8px 10px; text-align: left; }
+th { color: $heading; }
 
 /* ---------- Phones ---------- */
 @media (max-width: 720px) {
