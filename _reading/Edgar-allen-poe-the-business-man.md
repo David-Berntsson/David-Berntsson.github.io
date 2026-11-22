@@ -6,7 +6,7 @@ title: "The Business Man"
 author: "Edgar Allan Poe"
 read: 2026-11-22
 topic: "Literature & Philosophy"
-note: "Short story that satirizes the concept of the "Self-made man" "
+note: "Short story that satirizes the concept of the \"Self-made man\""
 ---
 ## My thoughts
 
