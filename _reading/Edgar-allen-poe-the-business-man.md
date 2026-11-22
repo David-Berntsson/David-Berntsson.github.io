@@ -6,7 +6,7 @@ title: "The Business Man"
 author: "Edgar Allan Poe"
 read: 2026-11-22
 topic: "Literature & Philosophy"
-note: "A short story that satirizes the concept of the 'self-made man,' which carries many surprising parallels to modern-day hustle culture."
+note: "A short story that satirizes the concept of the 'self-made man,' and which carries many surprising parallels to modern-day hustle culture."
 ---
 ## My thoughts
 
