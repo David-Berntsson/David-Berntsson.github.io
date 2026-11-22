@@ -1,12 +1,12 @@
 ---
 # PLACEHOLDER: replace the [bracketed] text and rename this file, or delete it.
 kind: article
-title: "[Article title]"
-source: "[Publication or author]"
-link: https://example.com
-read: 2026-11-01
-topic: Artificial Intelligence
-note: "[Why it's worth reading. Shown on the Articles & Books list.]"
+title: "The PageRank Citation Ranking: Bringing Order to the Web"
+source: "Page, L., Brin, S., Motwani, R., & Winograd, T. (1999)."
+link: https://shorturl.at/QFAm2
+read: 2026-11-22
+topic: Computer Science
+note: "This was the original paper that laid the algorithmic foundation of Google"
 ---
 ## My thoughts
 
