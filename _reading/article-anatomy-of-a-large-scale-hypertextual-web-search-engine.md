@@ -1,5 +1,4 @@
 ---
-# PLACEHOLDER: replace the [bracketed] text and rename this file, or delete it.
 kind: article
 title: "The anatomy of a large-scale hypertextual Web search engine"
 source: "Brin, S., & Page, L. (1998)."
