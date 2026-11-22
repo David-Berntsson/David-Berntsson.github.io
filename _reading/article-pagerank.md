@@ -1,5 +1,4 @@
 ---
-# PLACEHOLDER: replace the [bracketed] text and rename this file, or delete it.
 kind: article
 title: "The PageRank Citation Ranking: Bringing Order to the Web"
 source: "Page, L., Brin, S., Motwani, R., & Winograd, T. (1999)."
