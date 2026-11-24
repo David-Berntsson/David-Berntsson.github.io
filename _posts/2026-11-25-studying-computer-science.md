@@ -1,5 +1,5 @@
 ---
-title: On education and pursuing CS in the AI era.
+title: On Education And Pursuing CS In The AI Era.
 topic: Education
 ---
 This autumn I started studying Computer Science at the Royal Institute of Technology in Stockholm, having found my previous life working in M&A and Private Equity monotonous at its best and self-destructive at its worst. 
