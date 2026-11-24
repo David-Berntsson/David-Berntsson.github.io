@@ -1,5 +1,5 @@
 ---
-title: Studying Computer Science in the AI era and why it's still worth doing.
+title: On education and pursuing CS in the AI era.
 topic: Education
 ---
 This autumn I started studying Computer Science at the Royal Institute of Technology in Stockholm, having found my previous life working in M&A and Private Equity monotonous at its best and self-destructive at its worst. 
