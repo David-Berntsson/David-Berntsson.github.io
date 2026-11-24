@@ -1,6 +1,7 @@
 theme: jekyll-theme-minimal
 title: David's homepage
 description: Various thoughts and reflections
+timezone: Europe/Stockholm
 
 # The heading and line at the top of the Reflections & Writings sidebar.
 writings_title: Working Thoughts
