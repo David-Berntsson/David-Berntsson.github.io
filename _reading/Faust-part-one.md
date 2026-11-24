@@ -6,7 +6,7 @@ title: "Faust Part One"
 author: "Johann Wolfgang Von Goethe"
 read: 2026-11-24
 topic: "Literature & Philosophy"
-note: "A dissatisfied scholar sells his soul to the devil for unlimited knowledge and pleasure - quite possibly the best book I've ever read"
+note: "A dissatisfied scholar sells his soul to the devil for unlimited knowledge and pleasure - quite possibly the best book I've ever read."
 ---
 ## My thoughts
 
