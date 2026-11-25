@@ -3,6 +3,6 @@ layout: about
 section: about
 title: About me
 ---
-Hi, I'm David. [A few sentences about who you are: what you study or work on, and what you're curious about.]
+Hi, I'm David. I currently study Computer Science at the Royal Institute of Technology in Stockholm. I previously worked in Private Equity and studied finance before moving on to something I found to be more interesting.
 
-[Why this site exists: a place to think in writing, keep track of projects, and remember what you've read.]
+I created this webpage mostly to gather my diverse thoughts on things and to keep track of all the things I've read and worked on.
