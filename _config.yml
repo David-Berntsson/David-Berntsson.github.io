@@ -7,7 +7,7 @@ timezone: Europe/Stockholm
 writings_title: Working Thoughts
 writings_description: Longer pieces on computer science, mathematics, AI, finance, philosophy and other things.
 github_url: https://github.com/David-Berntsson
-email: "[your email]"   # shown under Contact on the About page
+email: "DavidBerntsson@outlook.com"   # shown under Contact on the About page
 
 plugins:
   - jekyll-seo-tag
